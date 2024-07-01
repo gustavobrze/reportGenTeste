@@ -22,4 +22,5 @@ if sheet:
             pdf = pdf_file.read()
         
         st.download_button('Baixar relatório', pdf, f'{client.strip()}.pdf', mime="application/octet-stream")
+        pdf_file.close()
         st.success("Relatório gerado.")
