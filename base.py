@@ -14,7 +14,7 @@ def client_list(sheet):
 
     base = format_base(sheet)
 
-    base_2 = base[base['RECEBIMENTO']=='No fim do contrato']
+    base_2 = base[((base['RECEBIMENTO']=='No fim do contrato') | (base['RECEBIMENTO']=='No fim do contrato '))]
 
     clients = base_2['NOME CLIENTE'].unique()
 
@@ -102,13 +102,5 @@ def generateReport(sheet, client):
     for v1, v2 in zip(rent_cliente['Valor atual'], rent_cliente['Valor aportado']):
         total_acc += v1
         total_init += v2
-    '''
-    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-
-    rent_cliente['Valor aportado'] = [locale.currency(x, grouping=True) for x in rent_cliente['Valor aportado']]
-    rent_cliente['Valor atual'] = [locale.currency(x, grouping=True) for x in rent_cliente['Valor atual']]
-
-    total_init = locale.currency(total_init, grouping=True)
-    total_acc = locale.currency(total_acc, grouping=True)'''
-
+        
     return [name, cpf, i, rent_cliente, total_init, total_acc]
