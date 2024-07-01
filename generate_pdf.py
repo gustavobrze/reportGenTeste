@@ -72,7 +72,4 @@ def genPDF(sheet, client):
 
     #savepath = select_folder()
     # Salvar o PDF
-    if not os.path.exists('C:/tempfiles'):
-        os.makedirs('C:/tempfiles')
-    
-    return pdf.output('C:/tempfiles/temp.pdf')
+    return pdf.output('temp.pdf')
